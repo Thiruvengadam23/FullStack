@@ -8,7 +8,7 @@ function FrontEnd(){
     const [editId,setEditId]=useState(null)
 
     useEffect(()=>{
-        axios.get("http://localhost:3000/users")
+        axios.get("http://localhost:4000/users")
         .then((res)=>{
             setUsers(res.data)
         })
@@ -24,17 +24,17 @@ function FrontEnd(){
     const handleSubmit=async(e)=>{
         e.preventDefault();
         if(editId){
-            await axios.put(`http://localhost:3000/users/${editId}`,form)
+            await axios.put(`http://localhost:4000/users/${editId}`,form)
             setEditId(null)
         }else{
-            const res=await axios.post("http://localhost:3000/users",form)  
+            const res=await axios.post("http://localhost:4000/users",form)  
         }
         setUsers((prev)=>[...prev,form])
         setForm({name:"",email:"",age:""})
     }
 
     const handleDelete=async(id)=>{
-        await axios.delete(`http://localhost:3000/users/${id}`)
+        await axios.delete(`http://localhost:4000/users/${id}`)
     }
 
     const handleEdit=(user)=>{
