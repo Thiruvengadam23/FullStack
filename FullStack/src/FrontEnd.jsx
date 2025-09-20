@@ -27,10 +27,8 @@ function FrontEnd(){
             await axios.put(`http://localhost:3000/users/${editId}`,form)
             setEditId(null)
         }else{
-            const res=await axios.post("http://localhost:3000/users",form)
-            
+            const res=await axios.post("http://localhost:3000/users",form)  
         }
-        
         setUsers((prev)=>[...prev,form])
         setForm({name:"",email:"",age:""})
     }
